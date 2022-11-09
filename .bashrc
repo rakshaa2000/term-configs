@@ -116,3 +116,4 @@ if ! shopt -oq posix; then
   fi
 fi
 export TERM="xterm-256color"
+ctags -R *
