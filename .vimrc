@@ -17,8 +17,25 @@ set foldmethod=indent
 set encoding=utf-8
 set scrolloff=30
 set pastetoggle=<F3>
+let base16colorspace=256 " Access colors present in 256 colorspace
+
+" if (empty($TMUX))
+"     if (has("nvim"))
+"         let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+"     endif
+"     if (has("termguicolors"))
+"         set termguicolors
+"     endif
+" endif
+
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
 
 "  Leader
+set termguicolors
 let mapleader = ","
 let g:mapleader = ","
 
@@ -48,44 +65,48 @@ map tl :tabnext <CR>
 map th :tabprev <CR>
 map tx :tabclose <CR>
 
+map <C-W>p :pop <CR>
+
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+syntax off
 
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Plugin 'scrooloose/nerdtree'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'sheerun/vim-polyglot'
-Plugin 'scrooloose/syntastic'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'majutsushi/tagbar'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'valloric/youcompleteme'
-Plugin 'ervandew/supertab'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'mattn/emmet-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'reedes/vim-lexical'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'vim-scripts/vim-auto-save'
-Plugin 'will133/vim-dirdiff'
-Plugin 'chriskempson/base16-vim'
-Plugin 'chiedo/vim-case-convert'
-call vundle#end()
+" packadd YouCompleteMe
+
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'scrooloose/nerdtree'
+Plug 'altercation/vim-colors-solarized'
+Plug 'scrooloose/nerdcommenter'
+Plug 'flazz/vim-colorschemes'
+Plug 'airblade/vim-gitgutter'
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/syntastic'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+" Plug 'ycm-core/youcompleteme'
+Plug 'ervandew/supertab'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mattn/emmet-vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'reedes/vim-lexical'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'vim-scripts/vim-auto-save'
+Plug 'will133/vim-dirdiff'
+Plug 'chriskempson/base16-vim'
+Plug 'chiedo/vim-case-convert'
+call plug#end()
 filetype plugin indent on
 
+syntax on
 let g:solarized_termcolors=512
 set background=dark
-set t_Co=256
+set t_Co=512
 colorscheme PaperColor
 
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -211,11 +232,11 @@ let g:airline_symbols.readonly = ''
 let g:airline_symbols.linenr = ' :'
 let g:airline_symbols.maxlinenr = '☰ '
 let g:airline_symbols.dirty='⚡'
-let g:airline_theme='atomic'
+let g:airline_theme='ayu_dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
 
-let base16colorspace=256  " Access colors present in 256 colorspace
-set termguicolors
+" let base16colorspace=256 " Access colors present in 256 colorspace
+" set termguicolors
