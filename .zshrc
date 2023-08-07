@@ -81,8 +81,17 @@ plugins=(
   rake
   rbenv
   ruby
+  adb
+  alias-finder
+  autojump
+  colorize
+  command-not-found
+  copyfile
+  copypath
+  emoji
   zsh-autosuggestions
   zsh-syntax-highlighting
+  zsh-256color
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -130,3 +139,9 @@ autoload -U compinit && compinit -u
     alias la='ls -A'
     alias l='ls -CF'
 
+if type rg &> /dev/null; then
+		export FZF_DEFAULT_COMMAND='rg --files'
+		export FZF_DEFAULT_OPTS='-m --height 50% --border'
+fi
+
+source /home/rakshaa/zsh-abbr/zsh-abbr.zsh
