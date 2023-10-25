@@ -104,6 +104,7 @@ Plugin 'chiedo/vim-case-convert'
 Plugin 'joonty/vdebug'
 Plugin 'junegunn/fzf.vim'
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plugin 'dracula/vim', { 'name': 'dracula' }
 call vundle#end()
 filetype plugin indent on
 
@@ -111,7 +112,7 @@ syntax on
 let g:solarized_termcolors=512
 set background=dark
 set t_Co=512
-colorscheme PaperColor
+colorscheme dracula
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
